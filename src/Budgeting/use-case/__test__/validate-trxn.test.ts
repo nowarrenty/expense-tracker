@@ -1,3 +1,8 @@
+import {
+  MemoTooLongError,
+  NotSafeIntegerAmountError,
+  NegativeAmountError,
+} from "../errors";
 import { AddTransactionDTO } from "../types";
 import { validateTransactionDTO } from "../utils/validate-trxn";
 
@@ -48,9 +53,7 @@ describe("validateTransactionDTO function", () => {
       .map((_) => {
         fail("Memo greater than 150 characters should not pass validation");
       })
-      .mapErr((e) =>
-        expect(e.message).toBe("Memo cannot be longer than 150 characters")
-      );
+      .mapErr((e) => expect(e).toBe(MemoTooLongError));
   });
 
   test("Negative amount", () => {
@@ -67,9 +70,7 @@ describe("validateTransactionDTO function", () => {
       .map((_) => {
         fail("Negative currency should not create a valid transaction");
       })
-      .mapErr((e) =>
-        expect(e.message).toBe("Amount value cannot be less than 0")
-      );
+      .mapErr((e) => expect(e).toStrictEqual(NegativeAmountError));
   });
 
   test("Amount that is too big", () => {
@@ -88,10 +89,6 @@ describe("validateTransactionDTO function", () => {
           "Amount > Number.MAX_SAFE_INTEGER should not create a valid transaction"
         );
       })
-      .mapErr((e) =>
-        expect(e.message).toBe(
-          `Amount cannot be greater than ${Number.MAX_SAFE_INTEGER}`
-        )
-      );
+      .mapErr((e) => expect(e).toStrictEqual(NotSafeIntegerAmountError));
   });
 });
