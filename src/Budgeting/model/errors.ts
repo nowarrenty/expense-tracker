@@ -11,7 +11,7 @@ const InvalidAccountError: DomainError = {
 };
 
 const NegativeAmountError: DomainError = {
-  message: "Error: Transaction cannot be less than 0",
+  message: "Error: Amount value is negative",
   name: "Negative_Amount_Error",
 };
 

@@ -5,8 +5,8 @@ const MissingAccountIdError: ApplicationError = {
   name: "Missing_Account_ID_Error",
 };
 
-const NonIntegerAmountError: ApplicationError = {
-  message: "Error: Amount must be an integer",
+const NotSafeIntegerAmountError: ApplicationError = {
+  message: "Error: Amount is invalid",
   name: "Invalid_Amount_Error",
 };
 
@@ -30,11 +30,17 @@ const InvalidCurrencyError: ApplicationError = {
   name: "Invalid_Currency_Error",
 };
 
+const NegativeAmountError: ApplicationError = {
+  message: "Error: Amount value is negative",
+  name: "Negative_Amount_Error",
+};
+
 export {
   MissingAccountIdError,
-  NonIntegerAmountError,
+  NotSafeIntegerAmountError,
   InvalidTimeError,
   MaximumAmountExceededError,
   MemoTooLongError,
   InvalidCurrencyError,
+  NegativeAmountError,
 };
