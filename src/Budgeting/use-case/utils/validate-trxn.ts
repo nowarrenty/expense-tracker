@@ -9,22 +9,23 @@ import {
   MaximumAmountExceededError,
   MemoTooLongError,
   MissingAccountIdError,
-  NonIntegerAmountError,
+  NotSafeIntegerAmountError,
+  NegativeAmountError,
 } from "../errors";
 import { ApplicationError, TransactionDTO, AddTransactionDTO } from "../types";
 
 export function validateTransactionDTO(
   dto: TransactionDTO | AddTransactionDTO
 ): Result<Transaction, ApplicationError> {
-  if (!Number.isSafeInteger(dto.amount)) {
-    return err(NonIntegerAmountError);
+  if (!Number.isSafeInteger(Number(dto.amount))) {
+    return err(NotSafeIntegerAmountError);
   }
 
   if (!isISODateCompatible(dto.date)) {
     return err(InvalidTimeError);
   }
   if (Number(dto.amount) < 0) {
-    return err(InvalidTimeError);
+    return err(NegativeAmountError);
   }
 
   if (Number(dto.amount) > Number.MAX_SAFE_INTEGER) {
