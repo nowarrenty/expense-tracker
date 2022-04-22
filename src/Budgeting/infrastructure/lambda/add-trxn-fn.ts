@@ -5,7 +5,7 @@ import { DDBTransactionRepo } from "../repo/ddb-trxn-repo";
 import { addTransaction } from "../../use-case/add-trxn";
 import { TransactionSnapshot } from "../../model/types";
 import initDocClient from "../repo/init-doc-client";
-import { getEnvVar } from "../utils/get-env-var";
+import { getEnvVar } from "./utils/get-env-var";
 
 type AddTransactionHandler = Handler<
   any,
