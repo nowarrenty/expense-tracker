@@ -134,3 +134,5 @@ cdk.out
 
 # MacOS
 .DS_Store
+
+src/**/lambda/local
