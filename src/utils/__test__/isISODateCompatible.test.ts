@@ -1,4 +1,4 @@
-import isISODateCompatible from "../isISODateCompatible";
+import isISODateCompatible from "../is-iso-date-compatible";
 
 describe("isISODateCompatible", () => {
   it("Should return should return true for valid date", () => {

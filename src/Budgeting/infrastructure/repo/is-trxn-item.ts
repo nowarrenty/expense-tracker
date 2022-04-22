@@ -1,5 +1,5 @@
 import * as DineroCurrencies from "@dinero.js/currencies";
-import hasKey from "../../../utils/hasKey";
+import hasKey from "../../../utils/has-key";
 import { TransactionItem } from "../types";
 
 export function isTransactionItem(val: unknown): val is TransactionItem {

@@ -15,8 +15,8 @@ import {
 } from "./errors";
 import { DomainError, Id, Money } from "./types";
 import * as DineroCurrencyCodes from "@dinero.js/currencies";
-import hasKey from "../../utils/hasKey";
-import isISODateCompatible from "../../utils/isISODateCompatible";
+import hasKey from "../../utils/has-key";
+import isISODateCompatible from "../../utils/is-iso-date-compatible";
 
 export class Transaction extends Entity {
   #accountId: Id;

@@ -1,8 +1,8 @@
 import * as DineroCurrencies from "@dinero.js/currencies";
 import { dinero } from "dinero.js";
 import { err, ok, Result } from "neverthrow";
-import hasKey from "../../../utils/hasKey";
-import isISODateCompatible from "../../../utils/isISODateCompatible";
+import hasKey from "../../../utils/has-key";
+import isISODateCompatible from "../../../utils/is-iso-date-compatible";
 import { Transaction } from "../../model/trxn";
 import {
   InvalidTimeError,
