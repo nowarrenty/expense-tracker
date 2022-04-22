@@ -16,4 +16,7 @@ describe("isISODateCompatible", () => {
   it("Should return should convert leap year to valid date", () => {
     expect(isISODateCompatible("2022-2-29")).toBe(true);
   });
+  it("Should return should convert leap year to valid date", () => {
+    expect(isISODateCompatible("2022-04-06T03:58:21+0000")).toBe(true);
+  });
 });
