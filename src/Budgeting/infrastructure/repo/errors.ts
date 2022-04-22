@@ -1,4 +1,4 @@
-import { RepositoryError } from "./types";
+import { RepositoryError } from "../types";
 
 const MalformedTransactionItemError: RepositoryError = {
   message: "Error: Malformed transaction item",
