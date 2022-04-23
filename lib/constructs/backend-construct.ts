@@ -12,11 +12,13 @@ export class BackendConstruct extends Construct {
     super(scope, id);
 
     this.sharedDatastore = new SharedDatastore(this, "Datastore");
-
     this.budgetingConstruct = new BudgetingConstruct(
       this,
       "Budgeting-Service-Construct",
       { table: this.sharedDatastore.ddbTable }
     );
+    this.sharedDatastore.grantReadWritePermissions([
+      this.budgetingConstruct.addTrnxFn,
+    ]);
   }
 }
