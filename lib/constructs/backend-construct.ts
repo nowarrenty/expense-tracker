@@ -18,7 +18,7 @@ export class BackendConstruct extends Construct {
       { table: this.sharedDatastore.ddbTable }
     );
     this.sharedDatastore.grantReadWritePermissions([
-      this.budgetingConstruct.addTrnxFn,
+      this.budgetingConstruct.addTrxnFn,
     ]);
   }
 }

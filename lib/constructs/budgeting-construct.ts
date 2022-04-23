@@ -10,12 +10,12 @@ interface BudgetingConstructProps {
 }
 
 export class BudgetingConstruct extends Construct {
-  readonly addTrnxFn: NodejsFunction;
+  readonly addTrxnFn: NodejsFunction;
 
   constructor(scope: Construct, id: string, props: BudgetingConstructProps) {
     super(scope, id);
 
-    this.addTrnxFn = new NodejsFunction(this, "add-trnx-fn", {
+    this.addTrxnFn = new NodejsFunction(this, "add-trnx-fn", {
       logRetention: 30,
       tracing: Tracing.ACTIVE,
       memorySize: 1024,
@@ -28,7 +28,7 @@ export class BudgetingConstruct extends Construct {
 
     new CfnOutput(this, "add-trnx-fn name", {
       exportName: "add-trnx-fn-name",
-      value: this.addTrnxFn.functionName,
+      value: this.addTrxnFn.functionName,
     });
   }
 }
