@@ -27,6 +27,7 @@ export class BudgetingConstruct extends Construct {
     });
 
     new CfnOutput(this, "add-trnx-fn name", {
+      exportName: "add-trnx-fn-name",
       value: this.addTrnxFn.functionName,
     });
   }
