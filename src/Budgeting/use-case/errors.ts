@@ -1,7 +1,7 @@
 import { ApplicationError } from "./types";
 
-const MissingAccountIdError: ApplicationError = {
-  message: "Error: Missing accountId",
+const MissinguserIdError: ApplicationError = {
+  message: "Error: Missing userId",
   name: "Missing_Account_ID_Error",
 };
 
@@ -36,7 +36,7 @@ const NegativeAmountError: ApplicationError = {
 };
 
 export {
-  MissingAccountIdError,
+  MissinguserIdError,
   NotSafeIntegerAmountError,
   InvalidTimeError,
   MaximumAmountExceededError,

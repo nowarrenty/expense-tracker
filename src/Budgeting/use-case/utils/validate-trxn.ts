@@ -8,7 +8,7 @@ import {
   InvalidTimeError,
   MaximumAmountExceededError,
   MemoTooLongError,
-  MissingAccountIdError,
+  MissinguserIdError,
   NotSafeIntegerAmountError,
   NegativeAmountError,
 } from "../errors";
@@ -38,8 +38,8 @@ export function validateTransactionDTO(
     }
   }
 
-  if (!dto.accountId) {
-    return err(MissingAccountIdError);
+  if (!dto.userId) {
+    return err(MissinguserIdError);
   }
 
   if (!hasKey(DineroCurrencies, dto.currencyCode)) {
@@ -50,7 +50,7 @@ export function validateTransactionDTO(
   }
 
   const transactionResult = Transaction.create({
-    accountId: dto.accountId,
+    userId: dto.userId,
     date: new Date(dto.date),
     value: dinero({
       amount: Number(dto.amount),

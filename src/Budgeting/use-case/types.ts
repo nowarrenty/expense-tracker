@@ -4,7 +4,7 @@ import { CurrencyCode, Id, TransactionSnapshot } from "../model/types";
 
 export interface TransactionDTO {
   id: Id;
-  accountId: Id;
+  userId: Id;
   date: string;
   amount: bigint;
   currencyCode: CurrencyCode;
@@ -14,7 +14,7 @@ export interface TransactionDTO {
 }
 
 export interface AddTransactionDTO {
-  accountId: Id;
+  userId: Id;
   date: string;
   amount: bigint;
   currencyCode: CurrencyCode;

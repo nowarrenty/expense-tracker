@@ -40,9 +40,9 @@ export class DDBTransactionRepo implements TransactionRepository {
     const input: PutCommandInput = {
       TableName: this.#tableName,
       Item: {
-        PK: snapshot.id,
+        PK: `trxn#${snapshot.userId}`,
         SK: snapshot.id,
-        accountId: snapshot.accountId,
+        userId: snapshot.userId,
         date: snapshot.date,
         amount: snapshot.amount,
         currencyCode: snapshot.currencyCode,
@@ -119,7 +119,7 @@ export class DDBTransactionRepo implements TransactionRepository {
 
     const snapshot: TransactionSnapshot = {
       id: item.PK,
-      accountId: item.accountId,
+      userId: item.userId,
       date: item.date,
       currencyCode: item.currencyCode,
       amount: item.amount,

@@ -22,7 +22,7 @@ export const handler: AddTransactionHandler = async (event) => {
     tableName: tableName,
   });
   const addTransactionDTO: AddTransactionDTO = {
-    accountId: event.accountId,
+    userId: event.userId,
     date: event.date,
     currencyCode: event.currencyCode,
     amount: event.amount,

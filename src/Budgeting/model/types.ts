@@ -32,7 +32,7 @@ export type CurrencyCode = keyof typeof DineroCurrencyCodes;
 
 export interface TransactionProps {
   id?: Id;
-  accountId: Id;
+  userId: Id;
   date: Date;
   value: Money;
   vendor?: string;
@@ -41,7 +41,7 @@ export interface TransactionProps {
 
 export interface TransactionSnapshot {
   id: Id;
-  accountId: Id;
+  userId: Id;
   date: string;
   amount: number;
   currencyCode: CurrencyCode;

@@ -9,7 +9,7 @@ import { validateTransactionDTO } from "../utils/validate-trxn";
 describe("validateTransactionDTO function", () => {
   test("a valid transaction", () => {
     const dto: AddTransactionDTO = {
-      accountId: "1230831",
+      userId: "1230831",
       vendor: "Netflix",
       date: "2022-04-06T03:58:21+0000",
       currencyCode: "JMD",
@@ -19,7 +19,7 @@ describe("validateTransactionDTO function", () => {
 
     validateTransactionDTO(dto)
       .map((t) => {
-        expect(t.accountId).toBe(dto.accountId);
+        expect(t.userId).toBe(dto.userId);
         expect(t.vendor).toBe(dto.vendor);
         expect(t.date).toStrictEqual(new Date(dto.date));
         expect(t.value.toJSON().currency.code).toBe(dto.currencyCode);
@@ -29,9 +29,9 @@ describe("validateTransactionDTO function", () => {
       .mapErr((e) => fail(e));
   });
 
-  test("Missing accountId", () => {
+  test("Missing userId", () => {
     const dto: AddTransactionDTO = {
-      accountId: "1230831",
+      userId: "1230831",
       vendor: "Netflix",
       date: "2022-04-06T03:58:21+0000",
       currencyCode: "JMD",
@@ -41,7 +41,7 @@ describe("validateTransactionDTO function", () => {
   });
   test("Memo that is too long", () => {
     const dto: AddTransactionDTO = {
-      accountId: "1230831",
+      userId: "1230831",
       vendor: "Netflix",
       date: "2022-04-06T03:58:21+0000",
       currencyCode: "USD",
@@ -58,7 +58,7 @@ describe("validateTransactionDTO function", () => {
 
   test("Negative amount", () => {
     const dto: AddTransactionDTO = {
-      accountId: "1230831",
+      userId: "1230831",
       vendor: "Netflix",
       date: "2022-04-06T03:58:21+0000",
       currencyCode: "USD",
@@ -75,7 +75,7 @@ describe("validateTransactionDTO function", () => {
 
   test("Amount that is too big", () => {
     const dto: AddTransactionDTO = {
-      accountId: "1230831",
+      userId: "1230831",
       vendor: "Netflix",
       date: "2022-04-06T03:58:21+0000",
       currencyCode: "USD",

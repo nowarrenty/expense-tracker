@@ -6,7 +6,7 @@ const InvalidCurrencyCodeError: DomainError = {
 };
 
 const InvalidAccountError: DomainError = {
-  message: "Error: Transaction must have a valid accountId",
+  message: "Error: Transaction must have a valid userId",
   name: "Invalid_Account_Error",
 };
 

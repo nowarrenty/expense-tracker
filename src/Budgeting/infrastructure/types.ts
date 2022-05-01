@@ -26,7 +26,7 @@ export interface TransactionRepository {
 export type TransactionItem = {
   PK: string;
   SK: string;
-  accountId: Id;
+  userId: Id;
   date: string;
   amount: number;
   currencyCode: CurrencyCode;

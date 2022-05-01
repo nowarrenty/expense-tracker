@@ -19,15 +19,15 @@ import hasKey from "../../utils/has-key";
 import isISODateCompatible from "../../utils/is-iso-date-compatible";
 
 export class Transaction extends Entity {
-  #accountId: Id;
+  #userId: Id;
   #date: Date;
   #value: Money;
   #vendor?: string;
   #memo?: string; //TODO add a value object for memo
   // #category: TransactionCategory;
 
-  get accountId() {
-    return Object.freeze(this.#accountId);
+  get userId() {
+    return Object.freeze(this.#userId);
   }
   get date() {
     return Object.freeze(this.#date);
@@ -51,7 +51,7 @@ export class Transaction extends Entity {
 
   private constructor(props: TransactionProps, id?: Id) {
     super(id);
-    this.#accountId = props.accountId;
+    this.#userId = props.userId;
     this.#date = props.date;
     this.#value = props.value;
     this.#vendor = props.vendor;
@@ -59,7 +59,7 @@ export class Transaction extends Entity {
   }
 
   static create(props: TransactionProps): Result<Transaction, DomainError> {
-    if (props.accountId.length < 1) return err(InvalidAccountError);
+    if (props.userId.length < 1) return err(InvalidAccountError);
     if (props.value.toJSON().amount < 0) return err(NegativeAmountError);
     const currencyCodeString = props.value.toJSON().currency.code;
     if (!hasKey(DineroCurrencyCodes, currencyCodeString)) {
@@ -81,7 +81,7 @@ export class Transaction extends Entity {
 
     const props: TransactionProps = {
       id: snapshot.id,
-      accountId: snapshot.accountId,
+      userId: snapshot.userId,
       date: new Date(snapshot.date),
       value: dinero({
         amount: snapshot.amount,
@@ -96,7 +96,7 @@ export class Transaction extends Entity {
 
   toSnapshot(): TransactionSnapshot {
     const snapshot: TransactionSnapshot = {
-      accountId: this.#accountId,
+      userId: this.#userId,
       id: this.id,
       date: this.#date.toISOString(),
       amount: this.value.toJSON().amount,

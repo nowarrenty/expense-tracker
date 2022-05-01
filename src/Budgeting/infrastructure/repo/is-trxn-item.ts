@@ -3,7 +3,7 @@ import hasKey from "../../../utils/has-key";
 import { TransactionItem } from "../types";
 
 export function isTransactionItem(val: unknown): val is TransactionItem {
-  const stringTypes = ["PK", "SK", "accountId", "date", "currencyCode"];
+  const stringTypes = ["PK", "SK", "userId", "date", "currencyCode"];
 
   // Loop through all the string types
   // and verify if they exisit and

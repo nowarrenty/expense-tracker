@@ -5,7 +5,7 @@ describe("isTransactionItem typeguard", () => {
     const item: unknown = {
       PK: "PK",
       SK: "SK",
-      accountId: "accountId",
+      userId: "userId",
       date: Date.now().toString(),
       amount: 900099,
       currencyCode: "JMD",
@@ -17,7 +17,7 @@ describe("isTransactionItem typeguard", () => {
     const item: unknown = {
       PK: "PK",
       SK: "SK",
-      accountId: "accountId",
+      userId: "userId",
       date: Date.now().toString(),
       amount: 90009.9,
       currencyCode: "JMD",
@@ -28,7 +28,7 @@ describe("isTransactionItem typeguard", () => {
   it("Fails an object without key PK", () => {
     const item: unknown = {
       SK: "SK",
-      accountId: "accountId",
+      userId: "userId",
       date: Date.now().toString(),
       amount: 90009,
       currencyCode: "JMD",
@@ -39,7 +39,7 @@ describe("isTransactionItem typeguard", () => {
   it("Fails an object without key SK", () => {
     const item: unknown = {
       PK: "PK",
-      accountId: "accountId",
+      userId: "userId",
       date: Date.now().toString(),
       amount: 90009,
       currencyCode: "JMD",
@@ -47,7 +47,7 @@ describe("isTransactionItem typeguard", () => {
     expect(isTransactionItem(item)).toBe(false);
   });
 
-  it("Fails an object without key accountId", () => {
+  it("Fails an object without key userId", () => {
     const item: unknown = {
       PK: "PK",
       SK: "SK",
@@ -62,7 +62,7 @@ describe("isTransactionItem typeguard", () => {
     const item: unknown = {
       PK: "PK",
       SK: "SK",
-      accountId: "accountId",
+      userId: "userId",
       currencyCode: "JMD",
     };
     expect(isTransactionItem(item)).toBe(false);
@@ -72,7 +72,7 @@ describe("isTransactionItem typeguard", () => {
     const item: unknown = {
       PK: "PK",
       SK: "SK",
-      accountId: "accountId",
+      userId: "userId",
       date: Date.now().toString(),
       currencyCode: "JMD",
     };
@@ -83,7 +83,7 @@ describe("isTransactionItem typeguard", () => {
     const item: unknown = {
       PK: "PK",
       SK: "SK",
-      accountId: "accountId",
+      userId: "userId",
       date: Date.now().toString(),
       amount: 900099,
     };
@@ -93,7 +93,7 @@ describe("isTransactionItem typeguard", () => {
     const item: unknown = {
       PK: 90,
       SK: "SK",
-      accountId: "accountId",
+      userId: "userId",
       date: Date.now().toString(),
       amount: 90009,
       currencyCode: "JMD",
@@ -105,7 +105,7 @@ describe("isTransactionItem typeguard", () => {
     const item: unknown = {
       PK: "90",
       SK: true,
-      accountId: "accountId",
+      userId: "userId",
       date: Date.now().toString(),
       amount: 90009,
       currencyCode: "JMD",
@@ -113,11 +113,11 @@ describe("isTransactionItem typeguard", () => {
     expect(isTransactionItem(item)).toBe(false);
   });
 
-  it("Fails an object with a non-string key accountId", () => {
+  it("Fails an object with a non-string key userId", () => {
     const item: unknown = {
       PK: "90",
       SK: "true",
-      accountId: 190982,
+      userId: 190982,
       date: Date.now().toString(),
       amount: 90009,
       currencyCode: "JMD",
@@ -129,7 +129,7 @@ describe("isTransactionItem typeguard", () => {
     const item: unknown = {
       PK: "SK",
       SK: "SK",
-      accountId: "190982",
+      userId: "190982",
       date: Date.now().toString(),
       amount: 90009,
       currencyCode: "JMDS",
