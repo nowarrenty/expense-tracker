@@ -48,6 +48,7 @@ export class DDBTransactionRepo implements TransactionRepository {
         currencyCode: snapshot.currencyCode,
         vendor: snapshot.vendor,
         memo: snapshot.memo,
+        createdAt: new Date(Date.now()).toISOString()
       },
     };
 

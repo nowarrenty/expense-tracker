@@ -30,6 +30,7 @@ export type TransactionItem = {
   date: string;
   amount: number;
   currencyCode: CurrencyCode;
+  createdAt: string;
   vendor?: string;
   memo?: string;
 };
