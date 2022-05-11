@@ -40,15 +40,17 @@ export class DDBTransactionRepo implements TransactionRepository {
     const input: PutCommandInput = {
       TableName: this.#tableName,
       Item: {
-        PK: `trxn#${snapshot.userId}`,
-        SK: snapshot.id,
+        PK: `txn#${snapshot.id}`,
+        SK: `txn#${snapshot.id}`,
+        type: `txn`,
+        id: snapshot.id,
         userId: snapshot.userId,
         date: snapshot.date,
         amount: snapshot.amount,
         currencyCode: snapshot.currencyCode,
         vendor: snapshot.vendor,
         memo: snapshot.memo,
-        createdAt: new Date(Date.now()).toISOString()
+        createdAt: new Date(Date.now()).toISOString(),
       },
     };
 
