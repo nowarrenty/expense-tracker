@@ -1,5 +1,6 @@
 import { Construct } from "constructs";
 import {
+  FieldLogLevel,
   GraphqlApi,
   MappingTemplate,
   ResolvableField,
@@ -35,6 +36,7 @@ export class GraphAPI extends Construct {
     this.api = new GraphqlApi(this, "GraphAPI", {
       name: "GraphQLAPI",
       schema: schema,
+      logConfig: { fieldLogLevel: FieldLogLevel.ALL },
       xrayEnabled: true,
     });
 
@@ -63,10 +65,7 @@ export class GraphAPI extends Construct {
         args: { id: requiredString },
         dataSource: dynamodbDataSource,
         requestMappingTemplate: MappingTemplate.fromFile(
-          join(
-            __dirname,
-            "mapping-templates/by-id-request.vtl"
-          )
+          join(__dirname, "mapping-templates/txn-request.vtl")
         ),
         responseMappingTemplate: MappingTemplate.dynamoDbResultItem(),
       })
