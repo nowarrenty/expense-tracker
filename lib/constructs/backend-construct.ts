@@ -1,4 +1,5 @@
 import { Construct } from "constructs";
+import { GraphAPI } from "./api/appsync-api-construct";
 import { BudgetingConstruct } from "./budgeting-construct";
 import { SharedDatastore } from "./shared-datastore-construct";
 
@@ -7,6 +8,7 @@ export interface BackendConstructProps {}
 export class BackendConstruct extends Construct {
   readonly budgetingConstruct: BudgetingConstruct;
   readonly sharedDatastore: SharedDatastore;
+  readonly graphAPI: GraphAPI;
 
   constructor(scope: Construct, id: string) {
     super(scope, id);
@@ -20,5 +22,10 @@ export class BackendConstruct extends Construct {
     this.sharedDatastore.grantReadWritePermissions([
       this.budgetingConstruct.addTrxnFn,
     ]);
+
+    this.graphAPI = new GraphAPI(this, "api", {
+      database: this.sharedDatastore.ddbTable,
+      transactionFn: this.budgetingConstruct.addTrxnFn,
+    });
   }
 }
